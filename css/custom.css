@@ -1,0 +1,60 @@
+.title {
+  z-index:500;
+  width: 100%;
+  color: #00dfff!important;
+  border-bottom: 2px solid #424242;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  font-size: 120%;
+  }
+
+blockquote {
+  background-color: #f0f0f099;
+  border-left: 4px solid lime;
+  text-align: left;
+  padding: 16px!important;
+}
+
+.container {
+  display: flex;
+  min-height: 500px;
+}
+
+.col{
+  flex: 1;
+  font-size: 85%;
+}
+
+
+.full {
+  display: flex;
+  flex-direction: column;
+  min-height: 500px;
+  margin-left: 6%;
+  margin-right: 6%;
+  text-align: center;
+  justify-content: center;
+}
+
+.desventaja {
+  color: red;
+}
+
+.ventaja {
+  color: green;
+}
+
+.pie {
+  font-size: 75%;
+  border-top: 2px solid silver;
+}
+
+.link {
+  font-size: 12pt;
+  font-family: monospace;
+}
+
+.p!important {
+  border: 1px solid red;
+  text-align: left;
+}
