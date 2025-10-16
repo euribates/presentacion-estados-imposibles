@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+  <head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+   
+   <title>Estados Imposibles (y como evitarlos)</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+
+   <link rel="stylesheet" href="dist/reset.css">
+   <link rel="stylesheet" href="dist/reveal.css">
+   <link rel="stylesheet" href="dist/theme/black.css">
+   <link rel="stylesheet" href="css/custom.css">
+   
+   <!-- Theme used for syntax highlighted code -->
+   <link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+  
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section data-background-image="img/background.jpg">
+        <video width="740" height="480" controls>
+        <source src="video/is.webm" type="video/webm" />
+        <source src="video/is.mp4" type="video/mp4" />
+        Aquí va un vídeo muy gracioso, pero su navegador no lo soporta
+        </video>
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">De que vá esta charla</h2>
+        <div class="full">
+        <ul>
+          <li>Qué son los estados imposibles</li>
+          <li>por qué deberíamos evitarlos</li>
+          <li>Ejemplos</li>
+          <li>Enlaces y resumen</li>
+        </ul>  
+        </div>
+      </section>
+      
+      <section data-background-image="img/background.jpg">
+      <h2 class="title">Es un principio de diseño</h2>
+      <ul>
+
+        <li>Suele usarse para los tipos de datos, pero se aplicas
+          también a Estructuras, bases de datos, etc.  <li>
+
+        <li>La idea es <b class="fragment highlight-green">reducir o
+            eliminar</b> los estados en
+          los que pueden estar los datos, idealmente haciendo <b class="fragment
+            highlight-green">imposible representar estados inválidos</b>
+        </li>
+
+      </ul>
+      </section data-background-image="img/background.jpg">
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Ejemplo (muy sencillo)</h2>
+        <p>
+        Obviamente es aplicable cuando tenemos codificado un estado directamente.
+        </p>
+
+        <p>
+        Por ejemplo, supongamos un sistema de publicaciones con tres estados posibles: 
+          <ul>
+            
+            <li>🔘 En preparación</li>
+            <li>🔘 En borrador</li>
+            <li>🔘 Publicado</li>
+          </ul>
+        </p>
+
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Estas cosas pasan</h2>
+        <img height="480" src="img/publicacion.png" alt=""/>
+
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">¿Es un borrador?</h2>
+        <img height="480" src="img/es_borrador.png" alt=""/>
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Una posible solución</h2>
+        <img height="480" src="img/enum.png" alt="Estados mutuamente excluyentes"/>
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Reglas para clasificar</h2>
+        
+        <p>Características deseables de una buena clasificación:</p>
+
+        <ul>
+
+          <li>Todas las clases se determinan con arreglo al
+          <b class="fragment highlight-green">mismo criterio</b> de clasificación.
+          </li> 
+
+          <li>La clasificación ha de ser
+            <b class="fragment highlight-green">exhaustiva</b>, es decir,
+            contener todas las especies o miembros
+            del concepto genérico.
+          </li>
+
+          <li> Las partes deben
+            <b class="fragment highlight-green">excluirse</b> entre sí
+          </li>
+            
+        </ul> 
+
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Solo Estados excluyentes</h2>
+        <img height="480" src="img/schrodingers-cat-in-box.png" alt="El gato debe
+        estar vivo o muerto"/>
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Gracias por su atención
+        <img src="img/thats-all-folks.jpeg" alt="Estados mutuamente excluyentes"/>
+        </h2>
+      </section>  
+        
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Nah, es broma</h2>
+        
+        <p>El estado no se refiere solo a estos estados específicos,
+        <b class="fragment highlight-green">cualquier configuración de datos</b>
+        puede tener un estado.</p>
+
+        <p>Vamos a ver otro ejemplo en que no hay un estado
+        explicito, pero nuestra elección de estructura 
+        de datos provoca un estado implícito.</p>
+
+      </section>
+
+      <section data-background-image="img/background.jpg">
+
+        <h2 class="title">Periodos contiguos de tiempo</h2>
+
+        <p>Vamos a representar
+        una serie de <b class="fragment highlight-green">periodos
+          contiguos</b> en el tiempo.
+        </p>
+
+        <p>Por ejemplo, para una aplicación
+        que me permita monitorizar en todo momento
+        lo que estoy haciendo (o dejando de hacer).
+        </p>
+
+      </section>
+
+      <section data-background-image="img/background.jpg">
+       <h2 class="title ">¡Fácil!</h2>
+        <img height="480" src="img/periodo.png" alt="Estructura periodo de tiempo"/>
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Pero...</h2>
+        <p>Permite la representación de estados imposibles, no deseados.</p>
+        <img height="480" src="img/escher-impossible.png" alt="Ilustración imposible de Escher"/>
+
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">... pueden haber huecos</h2>
+        <img height="340" src="img/hueco.png" alt="Huecos"/>
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">... pueden haber solapamientos</h2>
+
+        <img height="340" src="img/solapamiento.png" alt="Solapamientos"/>
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Eliminar redundacia</h2>
+        
+        <ul>
+          
+        <li>Podemos hacer que sea imposible representar huecos o
+        periodos que se superpongan</li>
+
+        <li>Similar a normalizar una base de datos:
+        <b class="fragment highlight-green">Eliminar la redundancia</b>
+        </li>
+
+        </ul>
+
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Eliminar fecha final</h2>
+        <ul>
+          
+          <li>
+            La marca de final de un periodo 
+            es redundante con la de inicio
+            del siguiente.
+          </li>
+
+          <li>
+            Solo necesitamos una fecha,
+            la de inicio.</li>
+
+          <li>El final está definido por
+            el inicio del siguiente periodo.
+          </li>
+
+        </ul>
+
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Menos es más</h2>
+
+        <img height="340" src="img/timemark.png" alt="Eventos - Estructura de datos"/>
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Ventajas</h2>
+
+        <h3 class="subtile">
+          Podemos ver las ventajas de esta representación<br>
+          analizando algunas de las operaciones<br>
+          que podríamos hacer.
+        </h3>
+
+      </section>
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Dividir un periodo (1/2)</h2>
+
+        <p>En el primer caso:</p>
+
+        <ul>
+          <li>Hacer ajustes en el periodo anterior</li>
+          <li>Insertar un nuevo periodo (posiblemente consultando el periodo siguiente)</li>
+          <li>Verificar las restricciones impuestas</li>
+        </ul>
+
+
+      </section>
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Dividir un periodo (2/2)</h2>
+
+        <p>En el segundo caso:</p>
+
+        <ul>
+          <li>
+           añadir una fecha el conjunto
+          </li>
+        </ul>
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Vale, pero...</h2>
+
+        <ul>
+          <li>Todo eso esta muy bien, pero...</li>
+          <li>Yo sigo necesitando trabajar con periodos, con su inicio y final</li>
+          <li>Por ejemplo, porque tengo código ya funcionando que usa ese convenio.
+          </li>
+        </ul>
+
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title"><strike>Debemos</strike> Podemos ocultar la representación interna</h2>
+
+        <ul>
+          <li>Se puede proyectar la secuencia de fechas a la forma deseada</li>
+          
+          <li>Las <i>properties</i> pueden ser muy útiles para esto</li>
+
+          <li>
+            La estructura interna hace <b class="fragment highlight-green">imposible</b> representar
+            huecos o solapamientos.</li>
+          <li>
+
+            Las restricciones deseadas <b class="fragment highlight-green">siempre</b> se cumplirán
+          </li>  
+        </ul>
+
+
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Algo así ...</h2>
+
+        <img height="480" src="img/pairwise.png" alt="Eventos - Estructura de datos"/>
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Ya casi estamos</h2>
+        <img height="480" src="img/wednesday.jpeg" alt="Vaya semanita..."/>
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Clases y Objetos</h2>
+        <h3 class="subtitle">Vamos a representar un semáforo en un cruce</h3>
+        <img height="480" src="img/traffic-light-blueprint.jpg" alt="Semáforo"/>
+        <e></e>
+
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Primera aproximación</h2>
+        <img height="480" src="img/semaforo-1.png" alt="Semáforo"/>
+
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">My work is done!</h2>
+        <img height="480" src="img/blender.jpg" alt="Blender fumando un puro"/>
+
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">¿Qué podría salir mal..?</h2>
+        <img height="480" src="img/Traffic-Lights-scaled.jpeg" alt="Semáforo"/>
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Segunda versión¹</h2>
+        <img height="480" src="img/semaforo-2.png" alt="Semáforo"/>
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Segunda versión²</h2>
+        <img height="480" src="img/semaforo-3.png" alt="Semáforo"/>
+        
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Resumen</h2>
+        <ul>
+          <li>Conviene echar una pensada sobre los estados y ver si se pueden representar
+            estados imposibles. En ese caso, ver si se puede eliminar la posibilidad.</li>
+
+          <li>Cualquier conjunto de datos interrelacionados son un estado</li>
+          
+          <li>La representación de un objeto “real” no tiene que
+            seguir su estructura “fisica”</li>
+        </ul>
+
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Enlaces</h2>
+        <ul>
+          <li>Charla en YouTube 
+          "<i>Making Impossible States Impossible</i>"<br>
+          por Richard Feldman<br>
+          <a href="https://www.youtube.com/watch?v=IcgmSRJHu_8">https://www.youtube.com/watch?v=IcgmSRJHu_8</a>
+          </li>
+
+          <li>
+            Artículo 
+            "<i>Make Invalid States Unrepresentable</i>"
+            de Kevin Mahoney Applying<br>
+            <a href="https://kevinmahoney.co.uk/articles/applying-misu">https://kevinmahoney.co.uk/articles/applying-misu</a>            
+
+          </li>
+        </ul>
+      </section>
+
+      <section data-background-image="img/background.jpg">
+        <h2 class="title">Gracias por su atención
+          <small>(Ahora si)</small>
+        </h2>
+        <p><small>
+          Preguntas, críticas, sugerencias, ideas, etc.
+          son todas bienvenidas
+        </small></p>
+        <img height="480" src="img/thats-all-folks.jpeg" alt="Esto es todo, amiges"/>
+        <div class="full">
+        </div>
+      </section>
+    </div>
+  </div>
+    
+<script src="dist/reveal.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script>
+// More info about initialization & config:
+ // - https://revealjs.com/initialization/
+ // - https://revealjs.com/config/
+ Reveal.initialize({
+    hash: true,
+    width: 1280,
+    height: 720,
+
+// Learn about plugins: https://revealjs.com/plugins/
+plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+});
+</script>
+</body>
+</html>
